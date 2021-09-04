@@ -13,10 +13,10 @@ const Home = ({type}) => {
   useEffect(() => {
     const getRandomLists = async () => {
       try{
-        const res = await axios.get(`lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : "" }`, {
+        const res = await axios.get(`https://eduflix-api.herokuapp.com/api/lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : "" }`, {
           headers: {
             token:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMzM0MmM3MjkxZTJmMzJjY2I5ZDMxOCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MzA3NDk0MDcsImV4cCI6MTYzODUyNTQwN30.-ji4_BegUJcA-pioeKQO_a-RuQ0WgxQQi4TmJ3Tl5Ak"
+            "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
           }
         });
         // console.log(res)
